@@ -14,7 +14,10 @@ class BaselineModel:
         self.name = name
         self.uuid = str(uuid)
         if uuid:
-            os.makedirs("models/" + self.name + "/" + self.uuid)
+            try:
+                os.makedirs("models/" + self.name + "/" + self.uuid)
+            except:
+                pass
 
     def build(self, input_shape, config):
         #define the parameters
@@ -101,7 +104,7 @@ class BaselineModel:
 
     def class_prediction(self, input):
         if hasattr(self, 'model'):
-            return np.argmax(self.model.predict(input, verbose=0), axis=1)
+            return self.model.predict(input, verbose=0) #ndarray not JSON serializable
         else:
             raise ValueError("No loaded model found, please use load_best_model method before")
 

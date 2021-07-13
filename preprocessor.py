@@ -1,10 +1,12 @@
 import pandas as pd
 from typing import Optional, Dict
 from joblib import dump, load
-from sklearn.preprocessing import LabelEncoder, OneHotEncoder, OrdinalEncoder
+from sklearn.preprocessing import OrdinalEncoder
 from sklearn.impute import SimpleImputer
 import numpy as np
 import warnings
+
+from feature_config import missing_val_config, categorical_config
 
 
 
@@ -15,22 +17,16 @@ class Processor:
     '''
 
     def __init__(self,
-                 categorical_config: Optional[Dict[str,str]] = None,
-                 missing_val_config: Optional[Dict[str,str]] = None
+                 categorical_config: Optional[Dict[str,str]] = categorical_config,
+                 missing_val_config: Optional[Dict[str,str]] = missing_val_config
                  ):
-        if categorical_config:
-            self.categorical_config = categorical_config
-            self.bool_to_cast = [key for key, val in self.categorical_config.items() if val == "bool"]
-            self.cat_to_transform = [key for key, val in self.categorical_config.items() if val == "categorical"]
-        else:
-            warnings.warn("Missing configuration for pre-processing categorical values, this method won't work")
+        self.categorical_config = categorical_config
+        self.bool_to_cast = [key for key, val in self.categorical_config.items() if val == "bool"]
+        self.cat_to_transform = [key for key, val in self.categorical_config.items() if val == "categorical"]
 
-        if missing_val_config:
-            self.missing_val_config = missing_val_config
-            self.features_replace_zero = [key for key, val in self.missing_val_config.items() if val == "zero"]
-            self.features_replace_mean = [key for key, val in self.missing_val_config.items() if val == "mean"]
-        else:
-            warnings.warn("Missing configuration for pre-processing missing values, this method won't work")
+        self.missing_val_config = missing_val_config
+        self.features_replace_zero = [key for key, val in self.missing_val_config.items() if val == "zero"]
+        self.features_replace_mean = [key for key, val in self.missing_val_config.items() if val == "mean"]
 
     def prep_missing_val(self, input: pd.DataFrame):
         if hasattr(self, 'imputer'):

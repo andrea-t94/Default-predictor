@@ -1,9 +1,6 @@
 import pandas as pd
-pd.set_option('display.max_columns', None)
-pd.set_option('display.max_rows', None)
 
 from preprocessor import Processor
-from config import categorical_config, missing_val_config
 
 df = pd.read_csv("/Users/andreatamburri/Downloads/dataset.csv", delimiter = ";")
 
@@ -13,9 +10,8 @@ df_test = df[df["default"].isnull()]
 print(df_test.head())
 df_test.drop(["default"], axis=1, inplace=True)
 
-
-
-processor = Processor(categorical_config=categorical_config, missing_val_config=missing_val_config)
+#load trained processor
+processor = Processor()
 processor.load_processor()
 #categorical and boolean preprocessing
 df_test_encoded = processor.encode_labels(df_test)
