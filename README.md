@@ -57,7 +57,7 @@ Once built the docker image:
 
 ## Input Data
 - The API can handle missing values, both in training and inference except for the categorical features  "merchant_category","merchant_group", "has_paid", "name_in_email"
-- JSON DATA strutcure '{"account_amount_added_12_24m":"0",
+- JSON DATA structure ``` '{"account_amount_added_12_24m":"0",
  "account_days_in_dc_12_24m":"0",
  "account_days_in_rem_12_24m":"0",
  "account_days_in_term_12_24m":"0",
@@ -98,13 +98,13 @@ Once built the docker image:
  "sum_paid_inv_0_12m":"178839",
  "time_hours":"9.653333333",
  "worst_status_active_inv":"1"
- }'
+ }' ```
 
 ## Output Data
 the output, in JSON format:
-{"message":
+``` {"message":
   {"ESTIMATE":"1.0", #probability of default, string format
   "MISSING_DATA":true,
   "MISSING_DATA_LIST":"['account_worst_status_12_24m', 'account_worst_status_6_12m']". #list of missing features properly handled
- }
+ } ```
  
