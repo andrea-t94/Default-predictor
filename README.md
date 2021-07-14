@@ -53,7 +53,7 @@ Once built the docker image:
 ## How to query on local/AWS hosted API
 - Gunicorn Deployment (manual) ``` $ curl -X POST "http://0.0.0.0:5000/api/detection" -H "Content-Type: application/json" --data '{JSON DATA}' ```
 - AWS deployed ``` $ curl -X POST "http://defaultpredictorat-env-1.eba-qpsnfdxf.eu-west-2.elasticbeanstalk.com/api/detection" -H "Content-Type: application/json" --data  '{JSON DATA}' ```
-## NB: Please refer to ``` test_curl.sh ``` to an example of how to query both API, from command line
+### NB: Please refer to ``` test_curl.sh ``` to an example of how to query both API, from command line
 
 ## Input Data
 - The API can handle missing values, both in training and inference except for the categorical features  "merchant_category","merchant_group", "has_paid", "name_in_email"
