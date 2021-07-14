@@ -57,7 +57,7 @@ Once built the docker image:
 
 ## Input Data
 - The API can handle missing values, both in training and inference except for the categorical features  "merchant_category","merchant_group", "has_paid", "name_in_email"
-- JSON DATA structure ``` '{"account_amount_added_12_24m":"0",
+- JSON DATA structure sample ``` '{"account_amount_added_12_24m":"0",
  "account_days_in_dc_12_24m":"0",
  "account_days_in_rem_12_24m":"0",
  "account_days_in_term_12_24m":"0",
