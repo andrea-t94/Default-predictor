@@ -28,7 +28,7 @@ X = df_train_prep.drop(["default","uuid"],axis=1).astype(float).to_numpy()  #ker
 y = df_train_prep["default"].to_numpy()
 
 #model creation and training with cross-validation
-skf = StratifiedKFold(n_splits=2, random_state=42, shuffle=True)
+skf = StratifiedKFold(n_splits=5, random_state=42, shuffle=True)
 fold_n = 5
 accuracies = []
 aurocs = []
