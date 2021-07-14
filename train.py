@@ -10,9 +10,7 @@ from default_predictor import BaselineModel
 
 #raw data ingestion
 df = pd.read_csv("dataset.csv", delimiter = ";")
-#TODO split the dataset in the two parts
 df_train = df[df["default"].notnull()]
-df_test = df[df["default"].isnull()]
 
 #data preprocessing
 processor = Processor()

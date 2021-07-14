@@ -10,6 +10,7 @@ COPY dataset.csv ./dataset.csv
 #copy scripts
 COPY train.py ./train.py
 COPY inference.py ./inference.py
+COPY output_inference/predictions.csv ./output_inference/predictions.csv
 COPY feature_config.py ./feature_config.py
 COPY model_config.py ./model_config.py
 COPY default_predictor.py ./default_predictor.py
@@ -25,9 +26,10 @@ RUN python3 inference.py
 
 #app settings
 COPY app.py ./app.py
+COPY app_helpers.py ./app_helpers.py
 COPY wsgi.py ./wsgi.py
 # Expose port
 EXPOSE 5000
-# Start the app
+# Start the app manually
 CMD ["gunicorn", "app:app", "--bind", "0.0.0.0:5000"]
 

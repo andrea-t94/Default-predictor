@@ -1,5 +1,5 @@
 #list of all the features used
-features = ["account_amount_added_12_24m","account_days_in_dc_12_24m","account_days_in_rem_12_24m",
+FEATURES = ["account_amount_added_12_24m","account_days_in_dc_12_24m","account_days_in_rem_12_24m",
             "account_days_in_term_12_24m","account_incoming_debt_vs_paid_0_24m","account_status",
             "account_worst_status_0_3m","account_worst_status_12_24m","account_worst_status_3_6m",
             "account_worst_status_6_12m","age","avg_payment_span_0_12m","avg_payment_span_0_3m",
@@ -42,12 +42,12 @@ missing_val_config = {
     "num_arch_ok_12_24m": "mean",
     "num_arch_rem_0_12m": "mean",
     "num_unpaid_bills": "mean",
-    #"status_last_archived_0_24m": "zero",
-    #"status_2nd_last_archived_0_24m": "zero",
-    #"status_3rd_last_archived_0_24m": "zero",
-    #"status_max_archived_0_6_months": "zero",
-    #"status_max_archived_0_12_months": "zero",
-    #"status_max_archived_0_24_months": "zero",
+    "status_last_archived_0_24m": "zero",
+    "status_2nd_last_archived_0_24m": "zero",
+    "status_3rd_last_archived_0_24m": "zero",
+    "status_max_archived_0_6_months": "zero",
+    "status_max_archived_0_12_months": "zero",
+    "status_max_archived_0_24_months": "zero",
     "recovery_debt": "mean",
     "sum_capital_paid_account_0_12m": "mean",
     "sum_capital_paid_account_12_24m":"mean",
@@ -57,6 +57,7 @@ missing_val_config = {
 
 
 #dictionary about how to model categorical values
+#those cannot be replaced if nan
 categorical_config = {
      "merchant_category": "categorical",
      "merchant_group": "categorical",

@@ -8,8 +8,6 @@ import warnings
 
 from feature_config import missing_val_config, categorical_config
 
-
-
 class Processor:
     '''
     Preprocess the dataset, dealing  with categorical and missing data, accordingly to the configurations

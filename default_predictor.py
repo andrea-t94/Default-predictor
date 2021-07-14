@@ -88,7 +88,6 @@ class BaselineModel:
         self.best_model_path = None
         for dirs in os.listdir(models_dir):
             tmp_models_subdir = models_dir + dirs + "/"
-            print(tmp_models_subdir)
             try:
                 for model_file in os.listdir(tmp_models_subdir):
                     model_acc = float(os.path.splitext(model_file)[0])

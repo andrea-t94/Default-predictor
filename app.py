@@ -1,34 +1,11 @@
 import os
-from flask import Flask, jsonify, request, url_for, redirect
-import numpy as np
+from flask import Flask, request, url_for, redirect
 import pandas as pd
 
-from feature_config import features
 from default_predictor import BaselineModel
 from preprocessor import Processor
-
-
-def message(content, code):
-    return jsonify({'message':content}), code
-
-def parse_args(request_dict):
-    """Parse model features from incoming requests formatted in
-    JSON."""
-    # Initialize missing_data as False.
-    missing_data = False
-    missing_list=[]
-# Parse out the features from the request_dict.
-    x_list = []
-    for feature in features:
-        value = request_dict.get(feature, None)
-        if value:
-            x_list.append(value)
-        else:
-            # Handle missing features.
-            x_list.append(np.nan)
-            missing_data = True
-            missing_list.append(feature)
-    return x_list, missing_data, missing_list
+from app_helpers import message, parse_args
+from feature_config import FEATURES
 
 # model selection
 try:
@@ -57,7 +34,7 @@ def detection():
 
         #create dataframe from JSON
         x_list, missing_data, missing_list = parse_args(request.json)
-        input_df = pd.DataFrame([x_list],columns=features)
+        input_df = pd.DataFrame([x_list],columns=FEATURES)
 
         # categorical and boolean preprocessing
         df_test_encoded = processor.encode_labels(input_df)
@@ -67,8 +44,7 @@ def detection():
 
         # inference
         prediction = model.class_prediction(X_test)
-        print(missing_list)
-        response = dict(ESTIMATE=str(prediction[0][0]), MISSING_DATA=missing_data)
+        response = dict(ESTIMATE=str(prediction[0][0]), MISSING_DATA=missing_data, MISSING_DATA_LIST=str(missing_list))
         return message(response, 422)
 
     else:
@@ -78,7 +54,7 @@ def detection():
 @app.route("/", methods=['GET'])
 def default():
     return message(
-        "Welcome to Andrea Tamburri default predictor. Send a POST request with a JSON file containing all the features TBD",
+        "Welcome to Andrea Tamburri's default predictor. Send a POST request with a JSON file containing all the features TBD",
         200)
 
 
