@@ -107,6 +107,5 @@ the output, in JSON format:
   {"ESTIMATE":"1.0", #probability of default, string format
   "MISSING_DATA":true,
   "MISSING_DATA_LIST":"['account_worst_status_12_24m', 'account_worst_status_6_12m']". #list of missing features properly handled
- } 
- ```
+ } ```
  
