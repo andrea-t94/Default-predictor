@@ -43,7 +43,7 @@ curl -X POST "http://0.0.0.0:5000/api/detection" -H "Content-Type: application/j
    }'
 
 #deploy on AWS
-curl -X POST "http://defaultpredictorat-env-1.eba-qpsnfdxf.eu-west-2.elasticbeanstalk.com/api/detection" -H "Content-Type: application/json" --data '{"account_amount_added_12_24m":"0",
+curl -X POST "http://defaultpredictorat-env.eba-qpsnfdxf.eu-west-2.elasticbeanstalk.com//api/detection" -H "Content-Type: application/json" --data '{"account_amount_added_12_24m":"0",
  "account_days_in_dc_12_24m":"0",
  "account_days_in_rem_12_24m":"0",
  "account_days_in_term_12_24m":"0",
@@ -85,3 +85,5 @@ curl -X POST "http://defaultpredictorat-env-1.eba-qpsnfdxf.eu-west-2.elasticbean
  "time_hours":"9.653333333",
  "worst_status_active_inv":"1"
  }'
+
+http://defaultpredictorat-env.eba-qpsnfdxf.eu-west-2.elasticbeanstalk.com/
