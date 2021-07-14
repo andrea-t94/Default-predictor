@@ -50,6 +50,11 @@ Once built the docker image:
 - ```$ docker run default-predictor python3 inference.py  ``` will return the output of the inference of the records missing of dafault value in the dataset
 - ```$ docker run -p 5000:5000 default-predictor ``` will host the API on gunicorn application server, callable at http://localhost:5000/
 
+##AWS Elastic Beanstalk deployment
+- [API public docker image] (https://hub.docker.com/r/andret94/default-predictor)
+- ```Dockerrrun.aws.json``` is the configuration file to upload wile creating a web server application on Beanstalk, that will use the public image as server application
+- Deployed at http://defaultpredictorat-env.eba-qpsnfdxf.eu-west-2.elasticbeanstalk.com/
+
 ## How to query on local/AWS hosted API
 - Gunicorn Deployment (manual) ``` $ curl -X POST "http://0.0.0.0:5000/api/detection" -H "Content-Type: application/json" --data '{JSON DATA}' ```
 - AWS deployed ``` $ curl -X POST "http://defaultpredictorat-env-1.eba-qpsnfdxf.eu-west-2.elasticbeanstalk.com/api/detection" -H "Content-Type: application/json" --data  '{JSON DATA}' ```
