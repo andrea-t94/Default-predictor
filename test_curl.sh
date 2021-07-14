@@ -85,5 +85,3 @@ curl -X POST "http://defaultpredictorat-env.eba-qpsnfdxf.eu-west-2.elasticbeanst
  "time_hours":"9.653333333",
  "worst_status_active_inv":"1"
  }'
-
-http://defaultpredictorat-env.eba-qpsnfdxf.eu-west-2.elasticbeanstalk.com/
