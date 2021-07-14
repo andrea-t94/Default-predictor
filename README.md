@@ -98,8 +98,7 @@ Once built the docker image:
  "sum_paid_inv_0_12m":"178839",
  "time_hours":"9.653333333",
  "worst_status_active_inv":"1"
- }' 
- ```
+ }' ```
 
 ## Output Data
 the output, in JSON format:
