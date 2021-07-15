@@ -48,7 +48,7 @@ def detection():
         return message(response, 422)
 
     else:
-        return redirect(url_for("/"))
+        return message("No POST method, redirect to main route", 400), redirect(url_for("/"))
 
 
 @app.route("/", methods=['GET'])
