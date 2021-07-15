@@ -44,13 +44,13 @@ Docker build will:
 - run a training for deploying the first model (NB. the train will deal with the first model and processor deployment)
 - run inference on the missing default of the dataset and output it in csv format\
 
-## How to run Docker
+## How to run Docker for local deployment
 Once built the docker image:
 - ```$ docker run default-predictor python3 train.py ``` will handle the training and store the new text processor in artifacts directory and the model in model directory (not necessary, since in the build a model has already been trained)
 - ```$ docker run default-predictor python3 inference.py  ``` will return the output of the inference of the records missing of dafault value in the dataset
 - ```$ docker run -p 5000:5000 default-predictor ``` will host the API on gunicorn application server, callable at http://localhost:5000/
 
-##AWS Elastic Beanstalk deployment
+## AWS Elastic Beanstalk deployment
 - [API public docker image] (https://hub.docker.com/r/andret94/default-predictor)
 - ```Dockerrrun.aws.json``` is the configuration file to upload wile creating a web server application on Beanstalk, that will use the public image as server application
 - Deployed at http://defaultpredictorat-env.eba-qpsnfdxf.eu-west-2.elasticbeanstalk.com/
