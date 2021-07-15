@@ -35,7 +35,7 @@ For Docker install check out [official documentation](https://docs.docker.com/ge
 - clone repository ```
 $ git clone https://github.com/andrea-t94/Default-predictor.git ```
 - build docker image ```
-$ docker build -t default-predictor -f Dockerfile . ```\
+$ docker build -t default-predictor -f Dockerfile . ```
 - host gunicorn app ```
 $ docker run -p 5000:5000 default-predictor ```\
 \
@@ -44,21 +44,22 @@ Docker build will:
 - run a training for deploying the first model (NB. the train will deal with the first model and processor deployment)
 - run inference on the missing default of the dataset and output it in csv format\
 
-## How to run Docker
+## How to run Docker for local deployment (Gunicorn)
 Once built the docker image:
 - ```$ docker run default-predictor python3 train.py ``` will handle the training and store the new text processor in artifacts directory and the model in model directory (not necessary, since in the build a model has already been trained)
 - ```$ docker run default-predictor python3 inference.py  ``` will return the output of the inference of the records missing of dafault value in the dataset
 - ```$ docker run -p 5000:5000 default-predictor ``` will host the API on gunicorn application server, callable at http://localhost:5000/
 
-##AWS Elastic Beanstalk deployment
+## AWS Elastic Beanstalk deployment
 - [API public docker image] (https://hub.docker.com/r/andret94/default-predictor)
 - ```Dockerrrun.aws.json``` is the configuration file to upload wile creating a web server application on Beanstalk, that will use the public image as server application
 - Deployed at http://defaultpredictorat-env.eba-qpsnfdxf.eu-west-2.elasticbeanstalk.com/
 
 ## How to query on local/AWS hosted API
+From command line (refer to ``` test_API/test_curl.sh ``` to an example of how to query local and aws API)
 - Gunicorn Deployment (manual) ``` $ curl -X POST "http://0.0.0.0:5000/api/detection" -H "Content-Type: application/json" --data '{JSON DATA}' ```
-- AWS deployed ``` $ curl -X POST "http://defaultpredictorat-env-1.eba-qpsnfdxf.eu-west-2.elasticbeanstalk.com/api/detection" -H "Content-Type: application/json" --data  '{JSON DATA}' ```
-### NB: Please refer to ``` test_curl.sh ``` to an example of how to query both API, from command line
+- AWS deployed ``` $ curl -X POST "http://defaultpredictorat-env-1.eba-qpsnfdxf.eu-west-2.elasticbeanstalk.com/api/detection" -H "Content-Type: application/json" --data  '{JSON DATA}' ```\
+From Python script refer to  ``` test_API/post_request.py ```
 
 ## Input Data
 - The API can handle missing values, both in training and inference except for the categorical features  "merchant_category","merchant_group", "has_paid", "name_in_email"
@@ -77,7 +78,7 @@ Once built the docker image:
  "avg_payment_span_0_3m":"8.333333333",
  "merchant_category":"Dietary supplements",
  "merchant_group":"Health & Beauty",
- "has_paid":true,
+ "has_paid":True,
  "max_paid_inv_0_12m":"31638",
  "max_paid_inv_0_24m":"31638",
  "name_in_email":"no_match",
