@@ -35,7 +35,7 @@ For Docker install check out [official documentation](https://docs.docker.com/ge
 - clone repository ```
 $ git clone https://github.com/andrea-t94/Default-predictor.git ```
 - build docker image ```
-$ docker build -t default-predictor -f Dockerfile . ```\
+$ docker build -t default-predictor -f Dockerfile . ```
 - host gunicorn app ```
 $ docker run -p 5000:5000 default-predictor ```\
 \
