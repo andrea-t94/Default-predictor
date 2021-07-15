@@ -57,7 +57,7 @@ Once built the docker image:
 
 ## How to query on local/AWS hosted API
 From command line (refer to ``` test_API/test_curl.sh ``` to an example of how to query local and aws API)
-- Gunicorn Deployment (manual) ``` $ curl -X POST "http://0.0.0.0:5000/api/detection" -H "Content-Type: application/json" --data '{JSON DATA}' ```
+- Gunicorn Deployment (manual) ``` $ curl -X POST "http://localhost:5000/api/detection" -H "Content-Type: application/json" --data '{JSON DATA}' ```
 - AWS deployed ``` $ curl -X POST "http://defaultpredictorat-env-1.eba-qpsnfdxf.eu-west-2.elasticbeanstalk.com/api/detection" -H "Content-Type: application/json" --data  '{JSON DATA}' ```\
 From Python script refer to  ``` test_API/post_request.py ```
 
