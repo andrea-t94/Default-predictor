@@ -9,6 +9,12 @@ model_config = dict(
     class_weight={0: 0.5, 1: 300} #class weight dictionary, given an unbalacend dataset  88688:1289 = 100:1.43
 )
 
+logistic_config = dict(
+    solver = 'lbfgs',
+    verbose = 1,
+    n_jobs = 4,
+    class_weight = {0: 0.5, 1: 30}
+)
 """
 from tensowrflow documentation
 weight for class 0 = (1 / neg) * (total / 2.0)

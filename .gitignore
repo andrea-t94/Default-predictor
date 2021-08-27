@@ -2,6 +2,7 @@
 
 #app artifacts
 models
+logit_models
 artifacts
 
 #venv
